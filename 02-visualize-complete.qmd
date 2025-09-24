@@ -146,7 +146,7 @@ ggplot(data = sanitation_2020,
 
 ```
 
-## Task 7: Data communication
+## Task 8: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
@@ -154,6 +154,6 @@ ggplot(data = sanitation_2020,
 
 2.  Render the document and fix any errors
 
-## Task 8: Commit & Push & Issue
+## Task 9: Commit & Push & Issue
 
 -   Refer back to the instructions on the course website to complete the assignment: <https://ds4owd-002.github.io/website/assignments/md-03/md-03.html>
