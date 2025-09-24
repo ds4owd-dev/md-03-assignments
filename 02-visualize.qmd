@@ -135,4 +135,9 @@ ggplot(data = sanitation_2020,
 **In the YAML header (between the three dashes at the top of the document)**
 
 1.  Add your name as the author of this document
+
 2.  Render the document and fix any errors
+
+## Task 9: Commit & Push & Issue
+
+-   Refer back to the instructions on the course website to complete the assignment: <https://ds4owd-002.github.io/website/assignments/md-03/am-03-2-spreadsheet.html>
