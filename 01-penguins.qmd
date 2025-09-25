@@ -13,7 +13,6 @@ editor_options:
 ---
 
 ```{r}
-#| label: load-packages
 library(palmerpenguins)
 library(dplyr)
 ```
@@ -31,6 +30,13 @@ glimpse(penguins)
 ```
 
 ## Task 1: Create a subset of the data using filter()
+
+Run the following code chunk and observe the output in the Console. The instructions here would say: Use `filter()` to create a subset from `penguins` that only contains observations for Gentoo penguins.
+
+```{r}
+penguins |>
+  filter(species == "Gentoo")
+```
 
 Use `filter()` to create a subset from `penguins` that only contains observations for Adelie penguins.
 
@@ -144,7 +150,28 @@ Use `filter()` to create a subset from `penguins` that contains observations for
 
 ```
 
-## Task 4: Data communication
+## Task 4: Environment
+
+In all the tasks above, you wrote code to transform the `penguins` data. The results appeared in the Console but did not get saved anywhere.
+
+The following code chunk behaves differently. Run it and watch what happens in the Environment pane (top right panel in RStudio).
+
+```{r}
+penguins_flipper_sum <- penguins |>
+  group_by(species) |>
+  summarize(flip_max = max(flipper_length_mm, na.rm = TRUE),
+            flip_min = min(flipper_length_mm, na.rm = TRUE))
+```
+
+After running the code:
+
+1.  What new object appears in your Environment?
+
+2.  What is the difference between this code and the previous code chunks?
+
+3.  Why would we use the assignment operator `<-` to save our results?
+
+## Task 5: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
@@ -152,6 +179,6 @@ Use `filter()` to create a subset from `penguins` that contains observations for
 
 2.  Render the document and fix any errors
 
-## Task 5: Commit & Push & Issue
+## Task 6: Commit & Push & Issue
 
 -   Refer back to the instructions on the course website to complete the assignment: <https://ds4owd-002.github.io/website/assignments/md-03/am-03-1-data-transformation.html>

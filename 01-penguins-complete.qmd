@@ -13,7 +13,6 @@ editor_options:
 ---
 
 ```{r}
-#| label: load-packages
 library(palmerpenguins)
 library(dplyr)
 ```
@@ -24,13 +23,20 @@ All exercises in this assignment use the `penguins` data as a starting point.
 2.  Run the code chunk that contains `glimpse(penguins)`.
 3.  How many variables are in the data set?
 4.  How many observations are in the data set?
-5.  What data types are contained in the variables? (Reminder: <https://ds4owd-001.github.io/website/slides/lec-02-visualisation.html#/types-of-variables>)
+5.  What data types are contained in the variables? (Reminder: <https://ds4owd-002.github.io/website/slides/lec-02-visualisation.html#/types-of-variables>)
 
 ```{r}
 glimpse(penguins)
 ```
 
 ## Task 1: Create a subset of the data using filter()
+
+Run the following code chunk and observe the output in the Console. The instructions here would say: Use `filter()` to create a subset from `penguins` that only contains observations for Gentoo penguins.
+
+```{r}
+penguins |>
+  filter(species == "Gentoo")
+```
 
 Use `filter()` to create a subset from `penguins` that only contains observations for Adelie penguins.
 
@@ -171,12 +177,33 @@ penguins |>
 Use `filter()` to create a subset from `penguins` that contains observations for female penguins recorded at Torgersen and Biscoe Islands. Then use add the pipe `|>` and `count()` to verify that you written the correct code.
 
 ```{r}
-penguins |> 
-  filter(sex == "male", island %in% c("Dream", "Biscoe")) |> 
+penguins |>
+  filter(sex == "male", island %in% c("Dream", "Biscoe")) |>
   count(sex, island)
 ```
 
-## Task 4: Data communication
+## Task 4: Environment
+
+In all the tasks above, you wrote code to transform the `penguins` data. The results appeared in the Console but did not get saved anywhere.
+
+The following code chunk behaves differently. Run it and watch what happens in the Environment pane (top right panel in RStudio).
+
+```{r}
+penguins_flipper_sum <- penguins |>
+  group_by(species) |>
+  summarize(flip_max = max(flipper_length_mm, na.rm = TRUE),
+            flip_min = min(flipper_length_mm, na.rm = TRUE))
+```
+
+After running the code:
+
+1.  What new object appears in your Environment?
+
+2.  What is the difference between this code and the previous code chunks?
+
+3.  Why would we use the assignment operator `<-` to save our results?
+
+## Task 5: Data communication
 
 **In the YAML header (between the three dashes at the top of the document)**
 
@@ -184,6 +211,6 @@ penguins |>
 
 2.  Render the document and fix any errors
 
-## Task 5: Commit & Push & Issue
+## Task 6: Commit & Push & Issue
 
 -   Refer back to the instructions on the course website to complete the assignment: <https://ds4owd-002.github.io/website/assignments/md-03/md-03.html>
